@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+    <div class="main">
+        <div class="report-container">
+            <div class="report-header">
+                <h1 class="recent-Articles">Courses</h1>
+                <h2 class="t-op">please select the course which you want to teach this year</h2>
+            </div>
+            <div class="report-body">
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Name</h3>
+                        <h3 class="t-op">department</h3>
+                        <h3 class="t-op">Select</h3>
+                    </div>
+                    <br>
+                <% arrCourse.forEach(item => { %>
+                    <div class="item1">
+                        <h3 class="t-op-nextlvl"><%= item.name %></h3>
+                        <h3 class="t-op-nextlvl"><%= item.departmentName %></h3>
+                        <a href="choose-course-toTeach/<%= item._id %>" class="btn lonbtn">show</a>    
+                    </div>
+                <% }); %> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

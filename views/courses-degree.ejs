@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+<body>
+
+    <% allCourses.forEach(item => { %>
+    <h1><%= item.name %></h1>
+    <h1><%= item.level %></h1>
+    <a href="/set-degree-toStudents-inCourse/<%= item._id %>">show students</a>
+    <% }); %>   
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "formidable": "^2.1.1",
+    "mongoose": "^7.0.0",
+    "mv": "^2.1.1",
+    "nodemon": "^2.0.21"
+  },
+  "name": "code",
+  "version": "1.0.0",
+  "description": "graduation project (student registration system)",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abanoub Saad",
+  "license": "ISC"
+}

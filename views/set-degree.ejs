@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+<body>
+  <center>
+  <label for="">a3mal sna</label>
+  <input type="number" name="a3mal" id="a3mal">
+  <br>
+  <label for="">mid</label>
+  <input type="number" name="mid" id="mid">
+  <br>
+  <label for="">el3mli</label>
+  <input type="number" name="el3mli" id="el3mli">
+  <br>
+  <label for="">final</label>
+  <input type="number" name="final" id="final">
+  <br>
+  <button onclick="calc()">Calc degree</button>
+  <br>
+  <form action="/set-degree/<%= student._id %>/<%= course._id %>" method="post">
+    <label for="total">
+      total degree
+    </label>
+    <br>
+    <input type="number" name="degree" id="total" required>
+    <br>
+    <input type="submit">
+  </form>
+</center>
+  <script>
+    let total , a3mal , mid , el3mli , final ;
+    total = document.getElementById("total");
+    a3mal = document.getElementById("a3mal");
+    mid = document.getElementById("mid");
+    el3mli = document.getElementById("el3mli");
+    final = document.getElementById("final")
+    function calc(){
+      v= Number(a3mal.value) + Number(mid.value) + Number(el3mli.value) + Number(final.value);
+    total.value = v;
+    }
+
+  </script>
+  
+</body>
+</html>

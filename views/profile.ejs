@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+
+<%- include('partials/student-header') %>
+
+
+        <div class="main">
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Basic information</h1>
+                </div>
+                <div class="report-body">
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Name</h3>
+                        <h3 class="t-op">level</h3>
+                        <h3 class="t-op">department</h3>
+                    </div>
+                    <br>
+                    <div class="items">
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl"><%= objstudent.fname %> <%= objstudent.lname %></h3>
+                            <h3 class="t-op-nextlvl"><%= objstudent.level %></h3>
+                            <h3 class="t-op-nextlvl"><%= objstudent.department %></h3>    
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

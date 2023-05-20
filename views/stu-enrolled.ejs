@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+<body>
+  <h1> <%= course.name %> </h1>
+    
+    <!-- <h1><%= (Students) %></h1> -->
+    <% Students.forEach(item => { %>
+      <h1>
+    <%= item.fname %>
+    <%= item.lname %>
+    </h1>
+    <br>
+    <h2>
+    <%= item.level %>
+  </h2>
+    <a href="/set-degree/<%= item._id %>/<%= course._id %>">set his degree</a>
+
+    <%  }); %>
+  
+</body>
+</html>

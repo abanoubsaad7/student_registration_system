@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+    <center>
+        <div class="main">
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Add course</h1>
+                </div>
+                <div class="report-body">
+                    <center>
+                        <form action="/course" method="post" class="login">
+                            <label for="name">name</label>
+                            <input type="text" name="name">
+                            <br><br>
+                            <label for="departmentName">department name</label>
+                            <input type="text" name="departmentName">
+                            <br><br>
+                            <label for="hourse">hours</label>
+                            <input type="number" name="hourse">
+                            <br><br>
+                            <label for="level">level</label>
+                            <input type="number" name="level">
+                            <br><br>
+                            <hr>
+                            <br>
+                            <input type="submit" value="add course" class="lonbtn">
+                        </form>
+
+                    </center>
+                </div>
+            </div>
+        </div>
+        </center>
+</body>
+</html>
