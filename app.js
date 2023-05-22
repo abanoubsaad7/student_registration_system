@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
 })
 
 app.get("/index", (req, res) => {
-  res.render("index",{title:'student registration system'});
+  res.render("index", { title: 'student registration system' });
 });
 
 
@@ -80,7 +80,7 @@ app.post("/login", function (req, res) {
           res.redirect("/choose-course-toTeach");
         } else if (result.type === "controller") {
           res.redirect("/set-degree");
-        }else if (result.type === "stuff" || result.type === "admin"){
+        } else if (result.type === "stuff" || result.type === "admin") {
           res.redirect("/register")
         }
       } else {
@@ -93,18 +93,18 @@ app.post("/login", function (req, res) {
 });
 
 app.get('/profile', (req, res) => {
-  User.findById(InstanceUser._id).then((result)=>{
-    res.render('profile',{objstudent:result,title:'profile'})
+  User.findById(InstanceUser?._id).then((result) => {
+    res.render('profile', { objstudent: result, title: 'profile' })
   })
-  .catch((err)=>{
-    console.log(err);
-  })
+    .catch((err) => {
+      console.log(err);
+    })
 })
 
 //stuff  & admin path or request to add students  and if user is admin he can add other employee in system
 //get request
 app.get("/register", (req, res) => {
-  res.render("register",{title:"register"});
+  res.render("register", { title: "register" });
 });
 
 //post request
@@ -125,7 +125,7 @@ app.post("/profile", (req, res) => {
 //table admin path or request to add courses
 //get request
 app.get("/course", (req, res) => {
-  res.render("add-course",{title:"add course"});
+  res.render("add-course", { title: "add course" });
 });
 
 //post request
@@ -144,7 +144,7 @@ app.get("/select-course", function (req, res) {
   User.findOne(InstanceUser).then((student) => {
     let studentLevel = student.level;
     Course.find({ level: studentLevel }).then((course) => {
-      res.render('select-course',{title:'select course',arrCourse:course,objstudent:student})
+      res.render('select-course', { title: 'select course', arrCourse: course, objstudent: student })
       console.log(course); //course will display all courses that match with student level
     });
   });
@@ -152,25 +152,26 @@ app.get("/select-course", function (req, res) {
 
 app.get('/select-course-toStudy/:id', (req, res) => {
   let courseID = req.params.id;
-  User.findOne(InstanceUser).then((student)=>{
-    Course.findById({_id: courseID}).then((courseStudy) => {
-      res.render('course-toStudy',{title:'select the course to study',objectCourse:courseStudy,objstudent:student})
+  User.findOne(InstanceUser).then((student) => {
+    Course.findById({ _id: courseID }).then((courseStudy) => {
+      console.log(courseStudy, student)
+      res.render('course-toStudy', { title: 'select the course to study', objectCourse: courseStudy, objstudent: student })
     });
   })
 })
 
-app.get('/courses-table', async(req, res) => {
-  let StudentCourses = await StudentCourse.find({studendID: InstanceUser._id});
+app.get('/courses-table', async (req, res) => {
+  let StudentCourses = await StudentCourse.find({ studendID: InstanceUser?._id });
   let Courses = [];
   for (let i = 0; i < StudentCourses.length; i++) {
     const element = StudentCourses[i];
     Courses.push(await Course.findById(element.courseID));
   }
-  res.render('courses-table',{title:'courses table',arrCourses:Courses});
+  res.render('courses-table', { title: 'courses table', arrCourses: Courses });
 })
 
-app.get('/courses-degree', async(req, res) => {
-  let Degrees = await StudentDegree.find({studendID: InstanceUser._id})
+app.get('/courses-degree', async (req, res) => {
+  let Degrees = await StudentDegree.find({ studendID: InstanceUser?._id })
   let CourseNames = [];
   for (let i = 0; i < Degrees.length; i++) {
     const element = Degrees[i];
@@ -178,34 +179,34 @@ app.get('/courses-degree', async(req, res) => {
   }
   console.log(Degrees);
   console.log(CourseNames);
-  res.render('courses-degrees',{title:'courses degree',arrDegrees:Degrees, arrCourseNames: CourseNames});
+  res.render('courses-degrees', { title: 'courses degree', arrDegrees: Degrees, arrCourseNames: CourseNames });
 })
 
 //post request
 app.post("/select-course-toStudy/:id", function (req, res) {
   let IDCourseStudy = new mongoose.Types.ObjectId(req.params.id);
   StudentCourse.find({
-    studendID: InstanceUser._id,
+    studendID: InstanceUser?._id,
     courseID: IDCourseStudy,
   }).then((selectedCourseToStudy) => {
     if (selectedCourseToStudy == 0) {
       const newStudentCourse = new StudentCourse({
-        studendID: InstanceUser._id,
+        studendID: InstanceUser?._id,
         courseID: IDCourseStudy,
       });
       console.log(newStudentCourse);
       newStudentCourse.save().then((result) => {
         StudentDegree.find({
-          studendID:InstanceUser._id,
+          studendID: InstanceUser?._id,
           courseID: IDCourseStudy,
-        }).then((selectedCourse)=>{
+        }).then((selectedCourse) => {
           if (selectedCourse == 0) {
             const newStudentDegree = new StudentDegree({
-              studendID: InstanceUser._id,
-              courseID:IDCourseStudy,
+              studendID: InstanceUser?._id,
+              courseID: IDCourseStudy,
             });
             console.log(newStudentDegree);
-            newStudentDegree.save().then((result)=>{
+            newStudentDegree.save().then((result) => {
               res.redirect('/profile');
             })
           }
@@ -221,7 +222,7 @@ app.get("/choose-course-toTeach", (req, res) => {
   User.findOne(InstanceUser).then((prof) => {
     //InstanceUser.type = prof
     Course.find().then((courseTeach) => {
-      res.render('select-course-toTeach',{title:'select course to teach',arrCourse:courseTeach})
+      res.render('select-course-toTeach', { title: 'select course to teach', arrCourse: courseTeach })
       console.log(courseTeach); // courseTeach will display all courses in sys to select
     });
   });
@@ -229,19 +230,19 @@ app.get("/choose-course-toTeach", (req, res) => {
 
 app.get('/choose-course-toTeach/:id', (req, res) => {
   let courseID = req.params.id;
-  Course.findById({_id: courseID}).then((course) => {
-    res.render('course-toTeach',{title:'select the course',objCourse:course})
+  Course.findById({ _id: courseID }).then((course) => {
+    res.render('course-toTeach', { title: 'select the course', objCourse: course })
   });
 })
 
 //post request
 app.post("/choose-course-toTeach/:id", (req, res) => {
   let IDCourse = new mongoose.Types.ObjectId(req.params.id);
-  ProfCourse.find({ profID: InstanceUser._id, courseID: IDCourse }).then(
+  ProfCourse.find({ profID: InstanceUser?._id, courseID: IDCourse }).then(
     (selectedCourseToTeach) => {
       if (selectedCourseToTeach.length == 0) {
         const newProfCourse = new ProfCourse({
-          profID: InstanceUser._id,
+          profID: InstanceUser?._id,
           courseID: IDCourse,
         });
         console.log(newProfCourse);
@@ -258,14 +259,14 @@ app.post("/choose-course-toTeach/:id", (req, res) => {
 
 app.get('/set-degree', (req, res) => {
   console.log('InstanceUser :>> ', InstanceUser);
-  Course.find({level:InstanceUser.level}).then((course) => {
-    res.render('courses-degree',{title:"",allCourses:course})
+  Course.find({ level: InstanceUser.level }).then((course) => {
+    res.render('courses-degree', { title: "", allCourses: course })
   })
 })
 
 app.get("/set-degree-toStudents-inCourse/:id", (req, res) => {
   Course.findById(req.params.id).then((courseFound) => { //courseFound will use to display the course data in res.render
-    StudentCourse.find({courseID: courseFound._id}).then(async (result) => {
+    StudentCourse.find({ courseID: courseFound?._id }).then(async (result) => {
       let AllStudent = [];
       for (let i = 0; i < result.length; i++) {
         let sc = result[i]; //sc = students course array which store course id and student id
@@ -274,15 +275,15 @@ app.get("/set-degree-toStudents-inCourse/:id", (req, res) => {
         AllStudent.push(studentsFound);
       }
       console.log(AllStudent);
-      res.render("stu-enrolled", {Students: AllStudent,title:"",course:courseFound});
+      res.render("stu-enrolled", { Students: AllStudent, title: "", course: courseFound });
     });
   });
 });
 
 app.get('/set-degree/:idstudent/:idcourse', (req, res) => {
-  User.findById(req.params.idstudent).then((student)=>{
-    Course.findById(req.params.idcourse).then((course)=>{
-      res.render('set-degree',{title:"",student:student , course:course})
+  User.findById(req.params.idstudent).then((student) => {
+    Course.findById(req.params.idcourse).then((course) => {
+      res.render('set-degree', { title: "", student: student, course: course })
     });
   });
 });
@@ -291,7 +292,7 @@ app.get('/set-degree/:idstudent/:idcourse', (req, res) => {
 app.post('/set-degree/:idstudent/:idcourse', function (req, res) {
   let degree = req.body.degree;
   //find all courses's level == controller's level (courses model was filtered with level and department )
-  StudentDegree.findOneAndUpdate({studendID:req.params.idstudent,courseID:req.params.idcourse},{degree:degree}).then((result)=>{
+  StudentDegree.findOneAndUpdate({ studendID: req.params.idstudent, courseID: req.params.idcourse }, { degree: degree }).then((result) => {
     res.redirect('/set-degree')
   })
   //find all student who enrolled in this courses (studentCourses model)
