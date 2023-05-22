@@ -81,7 +81,7 @@ app.post("/login", function (req, res) {
         } else if (result.type === "controller") {
           res.redirect("/set-degree");
         }else if (result.type === "staff" || result.type === "admin"){
-          res.redirect("/register")
+          res.redirect("/manage-user")
         }
       } else {
         res.send(`log in faild as ${result.type}`);
@@ -103,10 +103,23 @@ app.get('/profile', (req, res) => {
 
 //staff  & admin path or request to add students  and if user is admin he can add other employee in system
 //get request
+app.get('/manage-user', (req, res) => {
+  res.render("manage-user",{title:"manage user"})
+})
+
 app.get("/register", (req, res) => {
   res.render("register",{title:"register"});
 });
-
+app.get('/update-students', (req, res) => {
+  User.find({type:"student"}).then((student)=>{
+    res.render('update-students',{arrStudent:student,title:'update-students'})
+  })
+})
+app.get('/update-students/:idstudent', (req, res) => {
+  User.findById(req.params.idstudent).then((student)=>{
+    res.render('update-students-form',{objStudent:student,title:'update-student'})
+  })
+})
 //post request
 app.post("/profile", (req, res) => {
   const newUser = new User(req.body);
@@ -121,6 +134,12 @@ app.post("/profile", (req, res) => {
       console.log(err);
     });
 });
+
+app.post('/ubdate-students/:idstudent', (req, res) => {
+  User.findByIdAndUpdate(req.params.idstudent,req.body).then((student)=>{
+    res.redirect('/ubdate-students')
+  })
+})
 
 //table admin path or request to add courses
 //get request

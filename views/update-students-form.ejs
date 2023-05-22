@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+    <center>
+        <div class="main">
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Register</h1>
+                </div>
+                <div class="report-body">
+                    <center>
+                        <form action="/ubdate-students/<%= objStudent._id %>" method="post">
+                            <label for="fname">first name</label>
+                            <input type="text" name="fname" value="<%= objStudent.fname %>">
+                            <br><br>
+                            <label for="lname">last name</label>
+                            <input type="text" name="lname" value="<%= objStudent.lname %>">
+                            <br><br>
+                            <label for="username">user name</label>
+                            <input type="text" name="username" value="<%= objStudent.username %>">
+                            <br><br>
+                            <label for="level">level</label>
+                            <input type="number" name="level" value="<%= objStudent.level %>">
+                            <br><br>
+                            <label for="phone">phone</label>
+                            <input type="text" name="phone" value="<%= objStudent.phone %>">
+                            <br><br>
+                            <label for="password">password</label>
+                            <input type="password" name="password" value="<%= objStudent.password %>">
+                            <br>
+                            <label for="cars">user's job:</label>
+                        
+                            <select name="type" id="type">
+                                <option value="student">student</option>
+                                <option value="stuff">stuff</option>
+                                <option value="professor">professor</option>
+                                <option value="table admin">table admin</option>
+                                <option value="controller">controller</option>
+                                <option value="admin">admin</option>
+                                <option value="youth">youth</option>
+                            </select>
+                            <hr>
+                            <input type="submit" value="update" class="lonbtn">
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+        </center>
+</body>
+</html>
