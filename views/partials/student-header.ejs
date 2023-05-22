@@ -1,61 +1,67 @@
-    <!-- for header part -->
-    <header>
+<!-- for header part -->
+<header>
 
-        <div class="logosec">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+    <div class="logosec">
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
             class="icn menuicn" id="menuicn" alt="menu-icon">
-            <div class="logo">Thebes Academy</div>
-        </div>
+        <div class="logo">Thebes Academy</div>
+    </div>
 
-        <div class="message">
-            <%= objstudent.username %>
+    <div class="message">
+        <%= objstudent?.username %>
             <div class="dp">
-                
+
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png"
                     class="dpicn" alt="dp">
-                    
+
             </div>
-        </div>
+    </div>
 
-    </header>
-    <div class="main-container">
-        <div class="navcontainer">
-            <nav class="nav">
-                <div class="nav-upper-options">
-                    <div class="nav-option option2">
-                        <a href="profile"><i class="fa-solid fa-user"></i></a>
-                        <a href="profile"><h3> profile</h3></a>
-                    </div>
+</header>
+<div class="main-container">
+    <div class="navcontainer">
+        <nav class="nav">
+            <div class="nav-upper-options">
+                <div class="nav-option option2">
+                    <a href="profile"><i class="fa-solid fa-user"></i></a>
+                    <a href="profile">
+                        <h3> profile</h3>
+                    </a>
+                </div>
 
-                    <div class="option2 nav-option">
-                      <a href="courses-table"><i class="fa-solid fa-table"></i></a>
-                      <a href="courses-table"><h3>courses table </h3></a>
-                    </div>
+                <div class="option2 nav-option">
+                    <a href="courses-table"><i class="fa-solid fa-table"></i></a>
+                    <a href="courses-table">
+                        <h3>courses table </h3>
+                    </a>
+                </div>
 
-                    <div class="nav-option option3">
-                        <a href="select-course">
-                            <i class="fa-solid fa-plus"></i>
-                        </a>
-                        <a href="select-course">
-                            <h3> select courses</h3>
-                        </a>
-                    </div>
+                <div class="nav-option option3">
+                    <a href="select-course">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                    <a href="select-course">
+                        <h3> select courses</h3>
+                    </a>
+                </div>
 
-                    <div class="nav-option option4">
-                      <a href="courses-degree"><i class="fa-solid fa-check"></i></a>
-                      <a href="courses-degree"><h3> courses degree</h3></a>
-
-                    </div>
-
-                    <div class="nav-option logout">
-                        <a href="index">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                        </a>
-                        <a href="index">
-                            <h3>Logout</h3>
-                        </a> 
-                    </div>
+                <div class="nav-option option4">
+                    <a href="courses-degree"><i class="fa-solid fa-check"></i></a>
+                    <a href="courses-degree">
+                        <h3> courses degree</h3>
+                    </a>
 
                 </div>
-            </nav>
-        </div>
+
+                <div class="nav-option logout">
+                    <a href="index">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                    <a href="index">
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+    </div>

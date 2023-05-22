@@ -10,23 +10,38 @@
                 </div>
                 <div class="report-body">
                     <center>
-                        <form action="/course" method="post" class="login">
-                            <label for="name">name</label>
-                            <input type="text" name="name">
-                            <br><br>
-                            <label for="departmentName">department name</label>
-                            <input type="text" name="departmentName">
-                            <br><br>
-                            <label for="hourse">hours</label>
-                            <input type="number" name="hourse">
-                            <br><br>
-                            <label for="level">level</label>
-                            <input type="number" name="level">
-                            <br><br>
-                            <hr>
-                            <br>
-                            <input type="submit" value="add course" class="lonbtn">
-                        </form>
+                      <form action="/course" method="post" class="login">
+                        <label for="name">name</label>
+                        <input type="text" name="name">
+                        <br><br>
+                        <label for="departmentName">department name</label>
+                        <input type="text" name="departmentName">
+                        <br><br>
+                        <label for="hoursOfCourse">hours Of Course</label>
+                        <input type="number" name="hoursOfCourse">
+                        <br><br>
+                        <label for="hours">hours</label>
+                        <input type="number" name="schedule.hours">
+                        <br><br>
+                        <label for="minutes">minutes</label>
+                        <input type="number" name="schedule.minutes">
+                        <br><br>
+                        <label for="level">level</label>
+                        <input type="number" name="level">
+                        <br><br>
+                        <select name="dayName" id="dayName">
+                          <option value="sunday">sunday</option>
+                          <option value="monday">monday</option>
+                          <option value="tuesday">tuesday</option>
+                          <option value="wednesday">wednesday</option>
+                          <option value="thursday">thursday</option>
+                          <option value="friday">friday</option>
+                          <option value="saturday">saturday</option>
+                        </select>
+                        <hr>
+                        <br>
+                        <input type="submit" value="add course" class="lonbtn">
+                    </form>
 
                     </center>
                 </div>

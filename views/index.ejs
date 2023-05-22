@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head') %>
-<body>
-    <center>
-    <div class="main">
-        <div class="report-container">
-            <div class="report-header">
-                <h1 class="recent-Articles">Log in</h1>
+<%- include('partials/head') %>
+
+    <body>
+        <center>
+            <div class="main">
+                <div class="report-container">
+                    <div class="report-header">
+                        <h1 class="recent-Articles">Log in</h1>
+                    </div>
+                    <div class="report-body">
+                        <center>
+                            <form action="login" method="post" class="login">
+                                <label for="username">user name</label>
+                                <input type="text" name="username" />
+                                <label for="password">password</label>
+                                <input type="password" name="password" />
+                                <label>your role:</label>
+                                <select name="type" id="type">
+                                    <option value="student">student</option>
+                                    <option value="stuff">stuff</option>
+                                    <option value="professor">professor</option>
+                                    <option value="table admin">table admin</option>
+                                    <option value="controller">controller</option>
+                                    <option value="admin">admin</option>
+                                </select>
+                                <input type="submit" value="log in" class="lonbtn">
+                            </form>
+                        </center>
+                    </div>
+                </div>
             </div>
-            <div class="report-body">
-                <center>
-                <form action="login" method="post" class="login">
-                    <label for="username">user name</label>
-                    <br>
-                    <input type="text" name="username">
-                    <br>
-                    <label for="password">password</label>
-                    <br>
-                    <input type="password" name="password">
-                    <br><br>
-                    <label>your role:</label>
-                    <select name="type" id="type">
-                        <option value="student">student</option>
-                        <option value="stuff">stuff</option>
-                        <option value="professor">professor</option>
-                        <option value="table admin">table admin</option>
-                        <option value="controller">controller</option>
-                        <option value="admin">admin</option>
-                    </select> 
-                    <br><br>
-                    <input type="submit" value="log in" class="lonbtn">
-                </form>
-                </center>
-            </div>
-        </div>
-    </div>
-    </center>
-</body>
+        </center>
+    </body>
+
 </html>

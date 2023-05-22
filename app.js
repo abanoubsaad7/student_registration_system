@@ -80,7 +80,7 @@ app.post("/login", function (req, res) {
           res.redirect("/choose-course-toTeach");
         } else if (result.type === "controller") {
           res.redirect("/set-degree");
-        }else if (result.type === "stuff" || result.type === "admin"){
+        }else if (result.type === "staff" || result.type === "admin"){
           res.redirect("/register")
         }
       } else {
@@ -101,7 +101,7 @@ app.get('/profile', (req, res) => {
   })
 })
 
-//stuff  & admin path or request to add students  and if user is admin he can add other employee in system
+//staff  & admin path or request to add students  and if user is admin he can add other employee in system
 //get request
 app.get("/register", (req, res) => {
   res.render("register",{title:"register"});
@@ -115,7 +115,7 @@ app.post("/profile", (req, res) => {
     .save()
     .then((result) => {
       console.log(result);
-      res.redirect("/");
+      res.redirect("/register");
     })
     .catch((err) => {
       console.log(err);
@@ -134,7 +134,7 @@ app.post("/course", function (req, res) {
 
   newCourse.save().then((result) => {
     console.log(result);
-    res.send("course was added successfully!");
+    res.redirect("/course");
   });
 });
 
@@ -176,9 +176,13 @@ app.get('/courses-degree', async(req, res) => {
     const element = Degrees[i];
     CourseNames.push((await Course.findById(element.courseID)).name);
   }
-  console.log(Degrees);
-  console.log(CourseNames);
-  res.render('courses-degrees',{title:'courses degree',arrDegrees:Degrees, arrCourseNames: CourseNames});
+  User.findById(InstanceUser?._id).then((student)=>{
+    console.log(Degrees);
+    console.log(CourseNames);
+    res.render('courses-degrees',{title:'courses degree',arrDegrees:Degrees, arrCourseNames: CourseNames,objstudent:student});
+  })
+
+  
 })
 
 //post request
@@ -187,30 +191,49 @@ app.post("/select-course-toStudy/:id", function (req, res) {
   StudentCourse.find({
     studendID: InstanceUser._id,
     courseID: IDCourseStudy,
-  }).then((selectedCourseToStudy) => {
+  }).then(async (selectedCourseToStudy) =>  {
     if (selectedCourseToStudy == 0) {
-      const newStudentCourse = new StudentCourse({
-        studendID: InstanceUser._id,
-        courseID: IDCourseStudy,
-      });
-      console.log(newStudentCourse);
-      newStudentCourse.save().then((result) => {
-        StudentDegree.find({
-          studendID:InstanceUser._id,
-          courseID: IDCourseStudy,
-        }).then((selectedCourse)=>{
-          if (selectedCourse == 0) {
-            const newStudentDegree = new StudentDegree({
-              studendID: InstanceUser._id,
-              courseID:IDCourseStudy,
-            });
-            console.log(newStudentDegree);
-            newStudentDegree.save().then((result)=>{
-              res.redirect('/profile');
-            })
+      let CorsesOfStudent = await StudentCourse.find({studendID: InstanceUser._id});
+      let UserCorse = await Course.findById(IDCourseStudy); //usercorse to the new enroll
+      let IsValid = true;
+      for (let i = 0; i < CorsesOfStudent.length; i++){
+        const element = CorsesOfStudent[i];
+        let Corse = await Course.findById(element.courseID); //old enrolled courses
+        if (Corse._id != UserCorse._id){
+          if (UserCorse.dayName == Corse.dayName) {
+            if (UserCorse.schedule.hours + (UserCorse.schedule.minutes*0.1) <= Corse.schedule.hours + (Corse.schedule.minutes*0.1) + Corse.hoursOfCourse
+              && UserCorse.schedule.hours + (UserCorse.schedule.minutes*0.1) + UserCorse.hoursOfCourse >= Corse.schedule.hours + (Corse.schedule.minutes*0.1)){
+                IsValid = false;
+              }
           }
-        })
-      });
+        }
+      }
+      if (IsValid) {
+        const newStudentCourse = new StudentCourse({
+          studendID: InstanceUser._id,
+          courseID: IDCourseStudy,
+        });
+        console.log(newStudentCourse);
+        newStudentCourse.save().then((result) => {
+          StudentDegree.find({
+            studendID:InstanceUser._id,
+            courseID: IDCourseStudy,
+          }).then((selectedCourse)=>{
+            if (selectedCourse == 0) {
+              const newStudentDegree = new StudentDegree({
+                studendID: InstanceUser._id,
+                courseID:IDCourseStudy,
+              });
+              console.log(newStudentDegree);
+              newStudentDegree.save().then((result)=>{
+                res.redirect('/profile');
+              })
+            }
+          })
+        });
+      }else{
+        res.send("this course has the same time in other course you enrolled")
+      }
     }
   });
 });
@@ -297,3 +320,5 @@ app.post('/set-degree/:idstudent/:idcourse', function (req, res) {
   //find all student who enrolled in this courses (studentCourses model)
   //find student and update/set his degree
 })
+
+//delete requests

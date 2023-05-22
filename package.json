@@ -4,17 +4,19 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "formidable": "^2.1.1",
-    "mongoose": "^7.0.0",
-    "mv": "^2.1.1",
-    "nodemon": "^2.0.21"
+    "mongoose": "^7.2.0",
+    "mv": "^2.1.1"
   },
   "name": "code",
   "version": "1.0.0",
   "description": "graduation project (student registration system)",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "author": "Abanoub Saad",
   "license": "ISC"
