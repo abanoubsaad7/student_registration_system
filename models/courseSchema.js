@@ -8,20 +8,20 @@ const courseSchema = new Schema ({
     level:Number,
     profID:mongoose.Types.ObjectId,
     dayName:String,
-    // schedule:{
-    //     hours:{
-    //         type:Number,
-    //         required:true,
-    //         min:0,
-    //         max:23
-    //     },
-    //     minutes:{
-    //         type:Number,
-    //         required:true,
-    //         min:0,
-    //         max:59
-    //     }
-   // }
+    schedule:{
+        hours:{
+            type:Number,
+            required:true,
+            min:0,
+            max:23
+        },
+        minutes:{
+            type:Number,
+            required:true,
+            min:0,
+            max:59
+        }
+   }
    })
    
    const Course = mongoose.model('course',courseSchema);
