@@ -135,9 +135,9 @@ app.post("/profile", (req, res) => {
     });
 });
 
-app.post('/ubdate-students/:idstudent', (req, res) => {
+app.post('/update-students/:idstudent', (req, res) => {
   User.findByIdAndUpdate(req.params.idstudent,req.body).then((student)=>{
-    res.redirect('/ubdate-students')
+    res.redirect('/update-students')
   })
 })
 
@@ -341,3 +341,31 @@ app.post('/set-degree/:idstudent/:idcourse', function (req, res) {
 })
 
 //delete requests
+
+//drop the course was already enrolled
+app.delete('/studentCourse/:idStudentCourse', function(req, res) {
+  StudentCourse.findOneAndDelete({courseID:req.params.idStudentCourse,studendID:InstanceUser._id}).then((result)=>{
+    StudentDegree.findOneAndDelete({courseID:req.params.idStudentCourse,studendID:InstanceUser._id}).then((result)=>{
+      res.json({ myLink: "/select-course" })
+    })
+  })
+});
+
+//delete student 
+app.get('/delete-student', (req, res) => {
+  User.find({type:"student"}).then((student)=>{
+    res.render('delete-student',{title:"delete student",arrStudent:student})
+  })
+})
+
+app.get('/delete-student/:idstudent', (req, res) => {
+  User.findById(req.params.idstudent).then((student)=>{
+    res.render('confirm-delete-student',{title:"delete student",objStudent:student})
+  })
+})
+
+app.delete('/student/:idStudent', function(req, res) {
+  User.findByIdAndDelete(req.params.idStudent).then((result)=>{
+    res.json({ myLink: "/manage-user" })
+  })
+});
