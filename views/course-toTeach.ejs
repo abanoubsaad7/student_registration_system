@@ -22,9 +22,24 @@
                         <form action="/choose-course-toTeach/<%= objCourse._id %>" method="post">
                             <input class="btn lonbtn" type="submit" value="Select">
                         </form>    
+                        <button data-linkid="<%= objCourse._id %>" class="btn btn-lg btn-danger delete">Drop</button>
                     </div>
             </div>
         </div>
     </div>
+    <script>
+      const btnelement = document.querySelector(".delete")
+      const courseId = btnelement.getAttribute("data-linkid");
+      btnelement.addEventListener("click", (del) => {
+          //data is variable we can store the data from eldata elly inside el json fy el app.js
+          fetch(`/profCourse/${courseId}`, { method: "DELETE" })
+              .then((response) => response.json())
+              .then((data) => window.location.href = data.myLink)
+              .catch((err) => {
+                  console.log(err);
+              });
+
+      })
+  </script>
 </body>
 </html>

@@ -369,3 +369,10 @@ app.delete('/student/:idStudent', function(req, res) {
     res.json({ myLink: "/manage-user" })
   })
 });
+
+//drop course was selected to teach by prof
+app.delete('/profCourse/:idProfCourse', function(req, res) {
+  ProfCourse.findOneAndDelete({courseID:req.params.idProfCourse,profID:InstanceUser._id}).then((result)=>{
+    res.json({ myLink: "/choose-course-toTeach" })
+  })
+});
