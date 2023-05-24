@@ -6,7 +6,6 @@ const courseSchema = new Schema ({
     name:String,
     hourse:Number,
     level:Number,
-    profID:mongoose.Types.ObjectId,
     dayName:String,
     schedule:{
         hours:{
