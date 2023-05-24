@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head') %>
+<head>
+  <%- include('partials/head') %>
+</head>
+<style>
+  .parent {
+    display: flex;
+    justify-content: center;
+
+  }
+  .lonbtn {
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+  }
+</style>
 <body>
-  <a href="register">add student</a>
-  <a href="update-students">update student</a>
-  <a href="delete-student">delete student</a>
+  <nav>
+    <ul class="parent">
+      <li class="lonbtn "><a href="register">Add Student</a></li>
+      <li class="lonbtn "><a href="update-students">Update Student</a></li>
+      <li class="lonbtn "><a href="delete-student">Delete Student</a></li>
+    </ul>
+  </nav>
 </body>
 </html>

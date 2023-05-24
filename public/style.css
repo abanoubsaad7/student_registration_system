@@ -354,7 +354,16 @@ a {
     color: #FFF;
 
 }
-
+.btn-danger {
+    border: 2px solid #e73d3d !important;
+    color: #000 !important;
+}
+.btn-danger:hover {
+    border: none !important;
+    background-color: #e73d3d !important;
+    /* border: 2px solid #e73d3d !important; */
+    color: #fff !important;
+}
 .report-body {
     max-width: 1160px;
     overflow-x: auto;

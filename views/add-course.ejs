@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head') %>
-<body>
-    <center>
-        <div class="main">
+<%- include('partials/head') %>
+<style>
+    .contain {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .report-container {
+        width: 600px;
+    }
+    .add-course label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .add-course input,
+    .add-course select {
+        width: 100%;
+        padding: 10px;
+        /* margin-bottom: 5px; */
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+</style>
+
+    <body>
+        <div class="contain">
             <div class="report-container">
                 <div class="report-header">
                     <h1 class="recent-Articles">Add course</h1>
                 </div>
                 <div class="report-body">
-                    <center>
-                      <form action="/course" method="post" class="login">
+                    <form class="add-course" action="/course" method="post" class="login">
                         <label for="name">name</label>
                         <input type="text" name="name">
                         <br><br>
@@ -30,23 +53,21 @@
                         <input type="number" name="level">
                         <br><br>
                         <select name="dayName" id="dayName">
-                          <option value="sunday">sunday</option>
-                          <option value="monday">monday</option>
-                          <option value="tuesday">tuesday</option>
-                          <option value="wednesday">wednesday</option>
-                          <option value="thursday">thursday</option>
-                          <option value="friday">friday</option>
-                          <option value="saturday">saturday</option>
+                            <option value="sunday">sunday</option>
+                            <option value="monday">monday</option>
+                            <option value="tuesday">tuesday</option>
+                            <option value="wednesday">wednesday</option>
+                            <option value="thursday">thursday</option>
+                            <option value="friday">friday</option>
+                            <option value="saturday">saturday</option>
                         </select>
                         <hr>
                         <br>
                         <input type="submit" value="add course" class="lonbtn">
                     </form>
-
-                    </center>
                 </div>
             </div>
         </div>
-        </center>
-</body>
+    </body>
+
 </html>

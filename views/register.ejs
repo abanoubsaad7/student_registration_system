@@ -1,52 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head') %>
-<body>
-    <center>
-        <div class="main">
+<%- include('partials/head') %>
+    <style>
+        .contain {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .report-container {
+            width: 600px;
+        }
+
+        .register label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .register input,
+        .register select {
+            width: 100%;
+            padding: 10px;
+            /* margin-bottom: 5px; */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+    </style>
+
+    <body>
+
+        <div class="contain">
             <div class="report-container">
                 <div class="report-header">
                     <h1 class="recent-Articles">Register</h1>
                 </div>
                 <div class="report-body">
-                    <center>
-                        <form action="/profile" method="post">
-                            <label for="fname">first name</label>
-                            <input type="text" name="fname">
-                            <br><br>
-                            <label for="lname">last name</label>
-                            <input type="text" name="lname">
-                            <br><br>
-                            <label for="username">user name</label>
-                            <input type="text" name="username">
-                            <br><br>
-                            <label for="level">level</label>
-                            <input type="number" name="level">
-                            <br><br>
-                            <label for="phone">phone</label>
-                            <input type="text" name="phone">
-                            <br><br>
-                            <label for="password">password</label>
-                            <input type="password" name="password">
-                            <br>
-                            <label for="cars">user's job:</label>
+                    <form class="register" action="/profile" method="post">
+                        <label for="fname">first name</label>
+                        <input type="text" name="fname">
+                        <br><br>
+                        <label for="lname">last name</label>
+                        <input type="text" name="lname">
+                        <br><br>
+                        <label for="username">user name</label>
+                        <input type="text" name="username">
+                        <br><br>
+                        <label for="level">level</label>
+                        <input type="number" name="level">
+                        <br><br>
+                        <label for="phone">phone</label>
+                        <input type="text" name="phone">
+                        <br><br>
+                        <label for="password">password</label>
+                        <input type="password" name="password">
+                        <br>
+                        <label for="cars">user's job:</label>
                         
-                            <select name="type" id="type">
-                                <option value="student">student</option>
-                                <option value="staff">staff</option>
-                                <option value="professor">professor</option>
-                                <option value="table admin">table admin</option>
-                                <option value="controller">controller</option>
-                                <option value="admin">admin</option>
-                                <option value="youth">youth</option>
-                            </select>
-                            <hr>
-                            <input type="submit" value="regist" class="lonbtn">
-                        </form>
-                    </center>
+                        <select name="type" id="type">
+                            <option value="student">student</option>
+                            <option value="staff">staff</option>
+                            <option value="professor">professor</option>
+                            <option value="table admin">table admin</option>
+                            <option value="controller">controller</option>
+                            <option value="admin">admin</option>
+                            <option value="youth">youth</option>
+                        </select>
+                        <br>
+                        <br>
+                        <input type="submit" value="regist" class="lonbtn">
+                    </form>
                 </div>
             </div>
         </div>
-        </center>
-</body>
+    </body>
+
 </html>

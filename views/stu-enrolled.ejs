@@ -1,22 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head') %>
-<body>
-  <h1> <%= course.name %> </h1>
-    
-    <!-- <h1><%= (Students) %></h1> -->
-    <% Students.forEach(item => { %>
-      <h1>
-    <%= item.fname %>
-    <%= item.lname %>
-    </h1>
-    <br>
-    <h2>
-    <%= item.level %>
-  </h2>
-    <a href="/set-degree/<%= item._id %>/<%= course._id %>">set his degree</a>
+<%- include('partials/head') %>
+  <style>
+    .lonbtn {
+      width: 150px;
+    }
+  </style>
 
-    <%  }); %>
-  
-</body>
+  <body>
+    <center>
+      <div class="main">
+        <div class="report-container">
+          <div class="report-header">
+            <h1 class="recent-Articles">
+              <%= course.name %>
+
+            </h1>
+          </div>
+          <div class="report-body">
+            <div class="report-topic-heading">
+              <h3 class="t-op">First Name</h3>
+              <h3 class="t-op">Last name</h3>
+              <h3 class="t-op">Level</h3>
+              <h3 class="t-op">Select</h3>
+            </div>
+            <% Students.forEach(item=> { %>
+              <div class="item1">
+                <h3 class="t-op-nextlvl">
+                  <%= item.fname %>
+                </h3>
+                <h3 class="t-op-nextlvl">
+                  <%= item.lname %>
+                </h3>
+                <h3 class="t-op-nextlvl">
+                  <%= item.level %>
+                </h3>
+                <a href="/set-degree/<%= item._id %>/<%= course._id %>" class="btn lonbtn">Set Their Degree</a>
+
+              </div>
+              <% }); %>
+          </div>
+        </div>
+      </div>
+    </center>
+
+
+
+
+  </body>
+
 </html>
