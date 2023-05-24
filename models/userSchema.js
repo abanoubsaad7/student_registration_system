@@ -9,6 +9,7 @@ const userSchema = new Schema ({
     phone:String,
     level:Number,
     department:String,
+    code:String,
     //to get the right path to current user
     type:String
 });
