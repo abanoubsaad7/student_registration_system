@@ -185,7 +185,9 @@ app.get('/courses-table', async(req, res) => {
     const element = StudentCourses[i];
     Courses.push(await Course.findById(element.courseID));
   }
-  res.render('courses-table',{title:'courses table',arrCourses:Courses});
+  User.findOne(InstanceUser).then((student)=>{
+    res.render('courses-table',{title:'courses table',arrCourses:Courses,objstudent:student})
+  })
 })
 
 app.get('/courses-degree', async(req, res) => {
