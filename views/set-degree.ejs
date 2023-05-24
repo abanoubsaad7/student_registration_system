@@ -33,23 +33,24 @@
     <div class="contain">
       <div class="report-container">
         <div class="report-header">
-          <h1 class="recent-Articles">Register</h1>
+          <h1 class="recent-Articles">set Degree</h1>
         </div>
         <div class="update-student">
 
-          <label for="">a3mal sna</label>
+          <label for="">year work</label>
           <input type="number" name="a3mal" id="a3mal">
           <br>
           <label for="">mid</label>
           <input type="number" name="mid" id="mid">
           <br>
-          <label for="">el3mli</label>
+          <label for="">practical</label>
           <input type="number" name="el3mli" id="el3mli">
           <br>
           <label for="">final</label>
           <input type="number" name="final" id="final">
           <br>
-          <button onclick="calc()">Calc degree</button>
+          <br>
+          <button onclick="calc()" class="btn lonbtn">Calc degree</button>
           <br>
           <form action="/set-degree/<%= student._id %>/<%= course._id %>" method="post">
             <label for="total">
@@ -58,7 +59,8 @@
             <br>
             <input type="number" name="degree" id="total" required>
             <br>
-            <input type="submit">
+            <br>
+            <input type="submit" class="btn lonbtn">
           </form>
         </div>
       </div>
