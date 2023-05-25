@@ -162,7 +162,8 @@ app.post("/course", function (req, res) {
 app.get("/select-course", function (req, res) {
   User.findOne(InstanceUser).then((student) => {
     let studentLevel = student.level;
-    Course.find({ level: studentLevel }).then((course) => {
+    let studentDept = student.department;
+    Course.find({ level: studentLevel , departmentName:studentDept}).then((course) => {
       res.render('select-course',{title:'select course',arrCourse:course,objstudent:student})
       console.log(course); //course will display all courses that match with student level
     });
