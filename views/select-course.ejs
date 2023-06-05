@@ -15,6 +15,7 @@
                                 <h3 class="t-op">Name</h3>
                                 <!-- <h3 class="t-op">level</h3> -->
                                 <h3 class="t-op">department</h3>
+                                <h3 class="t-op">time</h3>
                                 <h3 class="t-op">select</h3>
                             </div>
                             <br>
@@ -27,6 +28,9 @@
                                     <h3 class="t-op-nextlvl">
                                         <%= item.departmentName %>
                                     </h3>
+                                    <h3 class="t-op-nextlvl">
+                                      <%= item.dayName %> at <%= item.schedule.hours %> : <%= item.schedule.minutes %>
+                                  </h3>
                                     <a href="select-course-toStudy/<%= item._id %>" class="btn lonbtn">show</a>
                                 </div>
                                 <% }); %>
