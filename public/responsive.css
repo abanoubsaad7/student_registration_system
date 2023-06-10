@@ -82,6 +82,12 @@
 }
 
 @media screen and (max-width: 490px) {
+    .navclose .nav-option a:last-of-type {
+        display: inline-block !important;
+    }
+    .nav-upper-options {
+        align-items: start;
+    }
     .message {
         display: none;
     }
