@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<style>
+    .contain {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .report-container {
+        width: 600px;
+    }
+    .add-course label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .add-course input,
+    .add-course select {
+        width: 100%;
+        padding: 10px;
+        /* margin-bottom: 5px; */
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+</style>
+
+    <body>
+        <div class="contain">
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">update course</h1>
+                </div>
+                <div class="report-body">
+                    <form class="add-course" action="/update-courses/<%= objcourses._id %>" method="post" class="login">
+                        <label for="name">name</label>
+                        <input type="text" name="name" value="<%= objcourses.name %>">
+                        <br><br>
+                        <label for="departmentName">department name</label>
+                        <input type="text" name="departmentName" value="<%= objcourses.departmentName %>">
+                        <br><br>
+                        <label for="hoursOfCourse">hours Of Course</label>
+                        <input type="number" name="hoursOfCourse" value="<%= objcourses.hoursOfCourse %>">
+                        <br><br>
+                        <label for="hours">hours</label>
+                        <input type="number" name="schedule.hours" value="<%= objcourses.schedule.hours %>">
+                        <br><br>
+                        <label for="minutes">minutes</label>
+                        <input type="number" name="schedule.minutes" value="<%= objcourses.schedule.minutes %>">
+                        <br><br>
+                        <label for="level">level</label>
+                        <input type="number" name="level" value="<%= objcourses.level %>">
+                        <br><br>
+                        <select name="dayName" id="dayName">
+                            <option value="sunday">sunday</option>
+                            <option value="monday">monday</option>
+                            <option value="tuesday">tuesday</option>
+                            <option value="wednesday">wednesday</option>
+                            <option value="thursday">thursday</option>
+                            <option value="friday">friday</option>
+                            <option value="saturday">saturday</option>
+                        </select>
+                        <hr>
+                        <br>
+                        <input type="submit" value="update course" class="lonbtn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

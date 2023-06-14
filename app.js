@@ -73,7 +73,7 @@ app.post("/login", function (req, res) {
         result.type === user.type
       ) {
         if (result.type === "table admin") {
-          res.redirect("/course");
+          res.redirect("/manage-course");
         } else if (result.type === "student") {
           res.redirect("/profile");
         } else if (result.type === "professor") {
@@ -143,9 +143,24 @@ app.post('/update-students/:idstudent', (req, res) => {
 
 //table admin path or request to add courses
 //get request
-app.get("/course", (req, res) => {
+app.get('/manage-course', (req, res) => {
+  res.render("manage-course",{title:"manage course"})
+})
+app.get("/add-course", (req, res) => {
   res.render("add-course",{title:"add course"});
 });
+
+app.get('/update-courses', (req, res) => {
+  Course.find().then((course)=>{
+    res.render('update-courses',{arrcourse:course,title:'update-courses'})
+  })
+})
+
+app.get('/update-courses/:idcourse', (req, res) => {
+  Course.findById(req.params.idcourse).then((course)=>{
+    res.render('update-courses-form',{objcourses:course,title:'update-course'})
+  })
+})
 
 //post request
 app.post("/course", function (req, res) {
@@ -156,6 +171,12 @@ app.post("/course", function (req, res) {
     res.redirect("/course");
   });
 });
+
+app.post('/update-courses/:idcourse', (req, res) => {
+  Course.findByIdAndUpdate(req.params.idcourse,req.body).then((course)=>{
+    res.redirect('/update-courses')
+  })
+})
 
 //student path or request to select course to study
 //get request
@@ -377,5 +398,24 @@ app.delete('/student/:idStudent', function(req, res) {
 app.delete('/profCourse/:idProfCourse', function(req, res) {
   ProfCourse.findOneAndDelete({courseID:req.params.idProfCourse,profID:InstanceUser._id}).then((result)=>{
     res.json({ myLink: "/choose-course-toTeach" })
+  })
+});
+
+//delete course
+app.get('/delete-course', (req, res) => {
+  Course.find().then((course)=>{
+    res.render('delete-course',{title:"delete course",arrCourse:course})
+  })
+})
+
+app.get('/delete-course/:idcourse', (req, res) => {
+  Course.findById(req.params.idcourse).then((course)=>{
+    res.render('confirm-delete-course',{title:"delete course",objCourse:course})
+  })
+})
+
+app.delete('/course/:idcourse', function(req, res) {
+  Course.findByIdAndDelete(req.params.idcourse).then((result)=>{
+    res.json({ myLink: "/manage-course" })
   })
 });

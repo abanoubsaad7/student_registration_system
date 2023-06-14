@@ -10,7 +10,7 @@
     <div class="main">
       <div class="report-container">
         <div class="report-header">
-          <h1 class="recent-Articles">All students</h1>
+          <h1 class="recent-Articles">All courses</h1>
         </div>
         <div class="report-body">
           <div class="report-topic-heading">
@@ -18,16 +18,16 @@
             <h3 class="t-op">Level</h3>
             <h3 class="t-op">Select</h3>
           </div>
-          <% arrStudent.forEach(item=> { %>
+          <% arrcourse.forEach(item=> { %>
             <div class="item1">
               <h3 class="t-op-nextlvl">
-                <%= item.fname %>
-                  <%= item.lname %>
+                <%= item.name %>
+                  
               </h3>
               <h3 class="t-op-nextlvl">
                 <%= item.level %>
               </h3>
-              <a href="/update-courses/<%= item._id %>" class="btn lonbtn">update student</a>
+              <a href="/update-courses/<%= item._id %>" class="btn lonbtn">update course</a>
             </div>
             <% }); %>
         </div>
