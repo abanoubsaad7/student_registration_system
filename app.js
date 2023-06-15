@@ -168,7 +168,7 @@ app.post("/course", function (req, res) {
 
   newCourse.save().then((result) => {
     console.log(result);
-    res.redirect("/course");
+    res.redirect("/manage-course");
   });
 });
 
