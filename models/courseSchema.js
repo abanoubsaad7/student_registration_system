@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const courseSchema = new Schema ({
     departmentName:String,
     name:String,
-    hourse:Number,
+    hoursOfCourse:Number,
     level:Number,
     dayName:String,
     schedule:{
