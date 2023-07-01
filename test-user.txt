@@ -1,0 +1,45 @@
+test users to log in and enter the system
+every type of user has differnt role from other types
+[
+  {
+    username: abanoubsaad
+    password: 123456789
+    type: student
+  }
+
+  {
+    username: stu2
+    password: 1234
+    type: student
+  }
+
+  {
+    username: prof1
+    password: 1234
+    type: professor
+  }
+
+  {
+    username: admin1
+    password: 123456789
+    type: admin
+  }
+
+  {
+    username: tableadmin1
+    password: 123456789
+    type: table admin
+  }
+
+  {
+    username: controller
+    password: 1234
+    type: contoller
+  }
+
+  {
+    username: staff1
+    password: 1234
+    type: staff
+  }
+]
